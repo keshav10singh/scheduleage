@@ -1,0 +1,16 @@
+_include("LogoutAdmin.sah")
+	_include("ScheduleData.csv")
+function SchAdminLogin($emailid, $password, $Havs_Media){
+	_windowAction("maximize");
+	_click(_link("Log in"));
+	_setValue(_textbox("emailid"), $emailid);
+	_setValue(_password("password"), $password);
+	_click(_submit("Log in"));
+	_click(_div($Havs_Media));
+	_assertContainsText($Havs_Media, _div($Havs_Media));}
+
+/* --Functions Above-- */
+
+//SchAdminLogin("hvms.in@gmail.com", "dom@12345", "Havs Media");
+
+

@@ -1,0 +1,6 @@
+function SchLogOut()
+{
+	_click(_div("v1.7"));
+	_click($_LINK_KSHV_SNGH);
+	_click(_span("Signout"));
+}

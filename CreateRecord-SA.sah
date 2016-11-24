@@ -1,0 +1,44 @@
+_include("SchARfront");
+_include("LoginAdmin.sah")
+	_include("Logout")
+	
+//_include("LibraryFunction.sah")
+function CreateRecord($titleVal, $param, $value, $param_1, $value1, $param_2, $dirSearch, $dirSearch1, $alertify_text)
+{
+	_click(_link("Record"));
+	_setValue($_RECORDNAME_TXTBOX, $titleVal);
+	_click(_link("Add field"));
+	_click(_link("Text"));
+	_click(_link("Add field"));
+	_click(_link("Numeric"));
+	_click(_link("Add field"));
+	_click(_link("Boolean"));
+	_setValue($_NAMETITLE_TXTBOX, $param);
+	_setValue($_NAMEVALUE_TXTBOX, $value);
+	_setValue($_NUMBERTITLE_TXTBOX, $param_1);
+	_setValue($_NUMBERVALUE_NUMBOX, $value1);
+	_setValue($_BOOLEANNAME_TXTBOX, $param_2);
+	_click(_span("save"));
+	_click(_div("Loading Selected Folder..."));
+	_setValue($_FOLDERNAME_TXTBOX, $dirSearch);
+	_setValue(_textbox("dirSearch"), $dirSearch1);
+	_click(_div("folderContainer[1]"));
+	_click(_div("a-1[1]"));
+	_click(_link("Proceed"));
+	_click(_span("save"));
+	_click(_link("settings-options"));
+	_click(_link("Activate"));
+	_setValue($_ALERT_TXTBOX, $alertify_text);
+	_click(_submit($alertify_text));
+}
+
+/* --Functions Above-- */
+SchAdminLogin("hvms.in@gmail.com", "dom@12345", "Havs Media");
+CreateRecord("Rec-06-Nov16", "Name", "Nov", "Number", "11", "B-1", "a", "a-1", "OK");
+LogoutAdmin();
+
+/*_click(_div("bnrCol"));
+_selectWindow();
+_click(_link("Kshv Sngh"));
+_click(_span("Switch to Admin/Creator"));*/
+

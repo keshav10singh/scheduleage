@@ -1,0 +1,13 @@
+function LogoutAdmin(){
+	_click(_div("Havs Media"));
+	_assertExists(_div("Havs Media"));
+	_click(_link("Havs Media"));
+	_click(_span("Signout"));
+	_assertVisible(_link("Log in"));
+	
+}
+
+/* --Functions Above-- */
+//LogoutAdmin();
+
+

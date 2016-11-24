@@ -1,0 +1,24 @@
+_include("SchARfront.sah");
+
+function SchLogin($emailid, $password, $Kshv_Sngh){
+	//_click(_div("choosenPlanDetails"));
+	_click($_LINK_LOGIN);
+	_setValue($_TEXTBOX_USERLOGIN, $emailid);
+	_setValue($_TEXTBOX_PASSWORD, $password);
+	_click($_BUTTON_SUBMIT);
+	/*_click(_div("preview-inner"));
+	_click(_div("page-info"));
+	_click(_link("x"));
+	_click(_div($Kshv_Sngh));
+	
+	_assertContainsText($Kshv_Sngh, _div($Kshv_Sngh));*/
+}
+
+
+
+/*--Functions Above-- */
+
+//SchLogin("havas40media@gmail.com", "12345", "Kshv Sngh");
+
+//SchLogOut();
+

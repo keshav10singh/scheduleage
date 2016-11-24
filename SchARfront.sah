@@ -1,0 +1,16 @@
+//LogIn Repositary
+var $_TEXTBOX_USERLOGIN = _textbox("emailid");
+var $_TEXTBOX_PASSWORD=_password("password");
+var $_BUTTON_SUBMIT=_submit("Log in");
+var $_LINK_LOGIN=_link("Log in");
+var $_LINK_KSHV_SNGH=_link("Kshv Sngh");
+
+//Record Repositary
+var $_RECORDNAME_TXTBOX=_textbox("titleVal");
+var $_NAMETITLE_TXTBOX=_textbox("param");
+var $_NAMEVALUE_TXTBOX=_textbox("value");
+var $_NUMBERTITLE_TXTBOX=_textbox("param[1]");
+var $_NUMBERVALUE_NUMBOX=_numberbox("value");
+var $_BOOLEANNAME_TXTBOX=_textbox("param[2]");
+var $_FOLDERNAME_TXTBOX=_textbox("dirSearch");
+var $_ALERT_TXTBOX=_textbox("alertify-text");
