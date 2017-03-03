@@ -1,0 +1,13 @@
+//_include("blogAR/blogARUser.sah");
+function logout(){
+	_mouseOver($_LINK_HOWDY_USER);
+	_click($_LINK_LOG_OUT);
+}
+function login($log, $pwd){
+	_windowAction("maximize");
+	_maskLogs();
+	_setValue($_TEXTBOX_LOG, $log);
+	_setValue($_PASSWORD_PWD, $pwd);
+	_click($_SUBMIT_LOG_IN);
+	_unmaskLogs();
+}

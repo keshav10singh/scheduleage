@@ -1,0 +1,12 @@
+"TestCase","Key Word","Argument 1","Argument 2"
+,"loadSahi","blogAR/blogARBlog.sah"
+,"loadSahi","createBlogPost.sah"
+,"data =","_readCSVFile(""posts.csv"")"
+"Exercise 1","[Documentation]","Login to the application"
+,"login","[data:login]"
+
+"Add Blog Posts","[Documentation]","It will add 5 unique blog posts"
+
+,"[Keyword]","addPostsAndVerify"
+,"[Data]","[data:Posts:title]","[data:Posts:content]","[data:Posts:title]"
+,"logout"

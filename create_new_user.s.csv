@@ -1,0 +1,19 @@
+"TestCase","Key Word","Argument 1","Argument 2"
+,"loadSahi","""blogAR/blogARUser.sah"""
+,"loadSahi","""create_new_user.sah"""
+,"data =","_readCSVFile(""posts.csv"")"
+"Testcase for create new user","[Documentation]","Testcase for: create new user, verify created user."
+,"login","[data:login]"
+,"addNewUser","[data:newuser]"
+,"logout"
+
+"Verify New User Login","[Documentation]","Verify User Login"
+
+,"loginWithNewCreatedUser","[data:loginNewUser]"
+,"isUserLoggedIn","[data:userLoggedIn]"
+,"logout"
+
+"Testcase for cleanup task","[Documentation]","Testcase for: cleanup task"
+,"login","[data:login]"
+,"deleteUsers"
+,"logout"

@@ -1,0 +1,9 @@
+"TestCase","Key Word","Argument 1","Argument 2"
+,"loadSahi","createBlogPost.sah"
+,"data =","_readCSVFile(""posts.csv"")"
+"Exercise 3","[Documentation]","Delete Post"
+,"login","[data:login]"
+,"createNewPost","ToBeDeleted","This will create a test to delete"
+,"deletePost","ToBeDeleted"
+
+,"logout"

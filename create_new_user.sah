@@ -1,0 +1,48 @@
+_include("functionsLib.sah");
+_include("blogAR/blogARUser.sah");
+function loginWithNewCreatedUser($id, $pwd){
+	$id = $id + $timeStamp;
+	login($id, $pwd);
+}
+
+function addNewUser($userlogin, $email, $lastname, $newuserpass, $role){
+	$userlogin = $userlogin + $timeStamp;
+	$email = $email.substring(0, $email.indexOf("@")) + $timeStamp + $email.substring($email.indexOf("@"));
+	if(_isVisible($_HAMBURGER_ICON)) _click($_HAMBURGER_ICON);
+	//_click($_DIV_USERS);
+	_click($_LINK_ADD_NEW);
+	_setValue($_TEXTBOX_USERLOGIN, $userlogin);
+	_setValue($_EMAILBOX_EMAIL, $email);
+	_setValue($_TEXTBOX_FIRSTNAME, $userlogin);
+	_setValue($_TEXTBOX_LASTNAME, $lastname);
+	_click($_BUTTON_SHOW_PASSWORD);
+	_setValue($_TEXTBOX_PASS1_TEXT, $newuserpass);
+	_check($_CHECKBOX_PWWEAK);
+	_uncheck($_CHECKBOX_SENDUSERNOTIFICATION);
+	_setSelected($_SELECT_ROLE, $role);
+	_click($_SUBMIT_ADD_NEW_USER);
+	_assertVisible(_link($email));
+	_focusWindow();
+	_takePageScreenShot($_USERS_TABLE);
+}
+
+
+function isUserLoggedIn($fName, $lName){
+	$fullName = $fName + $timeStamp + " " + $lName;
+	_assertExists(_link("Howdy, "+ $fullName));
+}
+
+function deleteUsers(){
+	_log("Cleanup Task");
+	_click($_LINK_ALL_USERS);
+	_setValue(_searchbox("s"), "kshitij");
+	_click(_submit("Search Users"));
+	_check($_CHECKBOX_CB_SELECT_ALL_1);
+	if(_isVisible($_CHECKBOX_USERS)) _uncheck($_CHECKBOX_USERS);
+	_setSelected($_SELECT_ACTION2, "Delete");
+	_click($_SUBMIT_APPLY_2);
+	_check($_RADIO_DELETEOPTION1);
+	_click($_SUBMIT_CONFIRM_DELETION);
+}
+/* --Functions Above-- */
+var $timeStamp = new Date().getTime();

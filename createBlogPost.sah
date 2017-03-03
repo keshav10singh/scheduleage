@@ -1,0 +1,64 @@
+_include("blogAR/blogARBlog.sah");
+_include("functionsLib.sah");
+function createNewPost($posttitle,$content){
+	_click($_LINK_POSTS);
+	_click($_LINK_ADD_NEW);
+	_setValue($_TEXTBOX_POSTTITLE, $posttitle+ new Date().getTime());
+	_rteWrite($RTE_WRITE,$content);
+	_click($_SUBMIT_PUBLISH);
+}
+
+function verifyPost($entry_title){
+	var $link = _getAttribute(_link(0, _near(_strong("Permalink:"))),"href");
+	_call(window.open($link),"SahiTestWin");
+	_selectWindow("/.*/");
+	_assertEqual("/"+$entry_title+"/", _getText(_heading1("entry-title")));
+	_assertContainsText($entry_title, _heading1("entry-title"));
+	_closeWindow();
+	_selectWindow();
+}
+
+function logout(){
+	_mouseOver($_LINK_HOWDY_USER);
+	_click($_LINK_LOG_OUT);
+}
+
+function addPostsAndVerify($posttitle, $content, $entry_title){
+	createNewPost($posttitle,$content);
+	verifyPost($entry_title)
+}
+
+function deletePost($title){
+	
+	_click($_LINK_POSTS);
+	_click(_link("All Posts"));
+	_setValue(_searchbox("s"),$title);
+	_click(_submit("Search Posts"));
+	if(_isVisible(_link("/"+ $title +"/"))){
+	_check(_checkbox("/post/", _near(_link("/"+ $title +"/"))));
+	_setSelected(_select("action2"), "Move to Trash");
+	_click(_submit("Apply", _in(_div("tablenav bottom"))));
+	_assertEqual("No posts found.", _getText(_cell("No posts found.")));
+	_assertContainsText("No posts found.", _cell("No posts found."));
+	_click($_LINK_POSTS);
+	_setValue(_searchbox("s"),$title);
+	_click(_submit("Search Posts"));
+	_assertEqual("No posts found.", _getText(_cell("No posts found.")));
+	_assertContainsText("No posts found.", _cell("No posts found."));
+	_click(_link("/Trash/"));
+	_setValue(_searchbox("s"),$title);
+	_click(_submit("Search Posts"));
+	_assertEqual("/"+$title+"/", _getText(_strong("/"+$title+"/")));
+	}
+	else{
+	_log("Post doesn't exist");
+	}
+}
+
+//deletePost("Thank you STeP-In Forum");
+//login("user", "bitnami");
+//createNewPost("Sahi Pro Released!"+ new Date().getTime(),"TestSahi");
+//verifyPost("Title: Sahi Pro V6.3.0 Released!");
+//logout();
+//
+
